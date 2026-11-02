@@ -1,462 +1,264 @@
-<!doctype html>
-<html lang="ko">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050505">
+<meta name="description" content="Javokhir Tursunov — AI Engineer building video understanding systems and efficient edge AI for real-world deployment.">
+<title>Javokhir Tursunov — AI Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<meta name="description" content="Javokhir Tursunov, AI Engineer. CCTV 행동 인식, VLM 경보 확인, INT8 양자화와 엣지 배포.">
-<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>Javokhir Tursunov Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap">
 <style>
-/* Layout: a lab notebook of field experiments. A narrow meta rail (task, platform, numbers) beside each case,
-   the case itself read as problem, approach, result. Amber = what the detector draws, teal = what was verified. */
-:root {
-  --paper: #f2f4f5;
-  --surface: #ffffff;
-  --sunk: #e8ecee;
-  --ink: #17212a;
-  --muted: #56636d;
-  --line: #d3dade;
-  --box: #b86e00;
-  --ok: #24705f;
-  --alarm: #b8402c;
-  --f-display: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  --f-body: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  --f-mono: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #10161b; --surface: #172028; --sunk: #1d2731; --ink: #e4eaee; --muted: #93a2ad;
-    --line: #2b3742; --box: #eea53a; --ok: #5bb8a2; --alarm: #e86a52; color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --paper: #10161b; --surface: #172028; --sunk: #1d2731; --ink: #e4eaee; --muted: #93a2ad;
-  --line: #2b3742; --box: #eea53a; --ok: #5bb8a2; --alarm: #e86a52; color-scheme: dark;
-}
-
-body {
-  background: var(--paper); color: var(--ink);
-  font: 400 15.5px/1.7 var(--f-body);
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-  -webkit-font-smoothing: antialiased;
-}
-.wrap { max-width: 1080px; margin: 0 auto; }
-a { color: inherit; text-decoration-color: var(--box); text-underline-offset: 3px; }
-a:focus-visible, button:focus-visible { outline: 2px solid var(--box); outline-offset: 2px; }
-h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; }
-p { margin: 0; }
-.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
-.label { font: 500 11.5px/1.3 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
-
-/* hero */
-header.hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 48px; align-items: center; padding-block: 56px 40px; }
-.hero h1 { font-size: clamp(38px, 6vw, 64px); font-weight: 800; font-stretch: 78%; line-height: .98; letter-spacing: -.01em; }
-.hero .role { margin-top: 14px; font: 600 15px/1.4 var(--f-body); color: var(--box); }
-.hero .thesis { margin-top: 18px; font-size: 18px; line-height: 1.6; max-width: 34em; }
-.contact { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 8px 20px; font: 400 13.5px/1.5 var(--f-mono); color: var(--muted); }
-.contact span { user-select: all; color: var(--ink); }
-.frame { min-width: 0; }
-.frame svg { width: 100%; height: auto; display: block; }
-.frame figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); }
-
-.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-block: 1px solid var(--line); }
-.facts div { padding: 18px 16px 18px 0; display: grid; gap: 4px; }
-.facts div + div { padding-left: 16px; border-left: 1px solid var(--line); }
-.facts b { font: 700 28px/1.1 var(--f-display); font-stretch: 85%; }
-.facts small { font-size: 13px; color: var(--muted); line-height: 1.45; }
-
-/* news */
-.news { list-style: none; margin: 0; padding: 0; display: grid; }
-.news li { display: grid; grid-template-columns: 6.5em minmax(0, 1fr); gap: 16px; padding-block: 11px; border-top: 1px solid var(--line); }
-.news li:first-child { border-top: 0; }
-.news time { font: 500 13px/1.7 var(--f-mono); color: var(--box); font-variant-numeric: tabular-nums; }
-.news span { min-width: 0; }
-details.more { margin-top: 6px; border-top: 1px solid var(--line); }
-details.more summary { cursor: pointer; padding-block: 12px; font: 500 13px/1.4 var(--f-mono); color: var(--muted); }
-details.more summary:hover { color: var(--ink); }
-
-/* cases */
-section.block { padding-block: 56px 8px; }
-section.block > h2 { font-size: 30px; font-weight: 800; font-stretch: 85%; margin-bottom: 6px; }
-section.block > .lead { color: var(--muted); max-width: 46em; margin-bottom: 28px; }
-.case { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 32px; padding-block: 32px; border-top: 1px solid var(--line); }
-.case .rail { display: grid; gap: 14px; align-content: start; }
-.case .rail .tags { display: flex; flex-wrap: wrap; gap: 6px; }
-.tag { font: 500 12px/1 var(--f-mono); padding: 5px 7px; border: 1px solid var(--line); border-radius: 3px; color: var(--muted); }
-.tag.cert { border-color: var(--ok); color: var(--ok); }
-.stat { display: grid; gap: 2px; }
-.stat b { font: 700 24px/1.1 var(--f-display); font-stretch: 85%; }
-.stat small { font-size: 12.5px; color: var(--muted); line-height: 1.4; }
-.case h3 { font-size: 22px; font-weight: 700; font-stretch: 90%; line-height: 1.3; }
-.case .body { display: grid; gap: 16px; min-width: 0; }
-.pab { display: grid; gap: 10px; }
-.pab div { display: grid; grid-template-columns: 4.2em minmax(0, 1fr); gap: 12px; }
-.pab dt { font: 500 12px/1.9 var(--f-mono); color: var(--muted); }
-.pab dd { margin: 0; max-width: 62ch; }
-figure { margin: 0; }
-.chart { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 16px; overflow-x: auto; }
-.chart svg { display: block; width: 100%; min-width: 460px; height: auto; }
-.chart figcaption { margin-top: 8px; font-size: 12.5px; color: var(--muted); }
-.flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font: 400 13px/1.3 var(--f-mono); }
-.flow span { padding: 7px 9px; background: var(--sunk); border-radius: 3px; }
-.flow i { font-style: normal; color: var(--muted); }
-.flow span.v { background: transparent; border: 1px solid var(--ok); color: var(--ok); }
-
-/* charts */
-.ax { stroke: var(--line); stroke-width: 1; }
-.grid { stroke: var(--line); stroke-width: 1; stroke-dasharray: 2 3; }
-.t { fill: var(--muted); font: 400 11.5px var(--f-mono); }
-.t-ink { fill: var(--ink); font: 500 12px var(--f-body); }
-.bar-a { fill: var(--box); }
-.bar-b { fill: var(--muted); opacity: .55; }
-.bar-ok { fill: var(--ok); }
-.whisk { stroke: var(--ink); stroke-width: 1.5; }
-
-/* software + methods */
-.cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 40px; }
-.item { padding-block: 16px; border-top: 1px solid var(--line); display: grid; gap: 4px; }
-.item b { font-weight: 600; }
-.item p { color: var(--muted); font-size: 14.5px; }
-table.skills { width: 100%; border-collapse: collapse; font-size: 14.5px; }
-table.skills th { text-align: left; font: 500 12px/1.4 var(--f-mono); color: var(--muted); letter-spacing: .04em; padding: 12px 20px 12px 0; vertical-align: top; width: 9em; white-space: nowrap; }
-table.skills td { padding: 12px 0; border-top: 1px solid var(--line); }
-table.skills tr:first-child td, table.skills tr:first-child th { border-top: 0; }
-table.skills th { border-top: 1px solid var(--line); }
-.skills-wrap { overflow-x: auto; }
-footer { padding-block: 48px 64px; margin-top: 48px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 13.5px; }
-
-@media (max-width: 820px) {
-  header.hero { grid-template-columns: minmax(0, 1fr); gap: 28px; padding-block: 36px 28px; }
-  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .facts div:nth-child(3) { padding-left: 0; border-left: 0; }
-  .facts div:nth-child(n+3) { border-top: 1px solid var(--line); }
-  .case { grid-template-columns: minmax(0, 1fr); gap: 18px; }
-  .case .rail { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
-  .case .rail .tags { grid-column: 1 / -1; }
-  .cols { grid-template-columns: minmax(0, 1fr); }
-}
-@media (prefers-reduced-motion: no-preference) {
-  .scan { animation: scan 4.5s ease-in-out infinite; }
-  @keyframes scan { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
-}
+:root{--bg:#050505;--panel:#0c0c0c;--text:#f2f2f0;--muted:#92928e;--line:#242421;--accent:#d9ff65;--mono:'DM Mono',monospace;--sans:'Manrope','Pretendard','Noto Sans KR',sans-serif;--max:1180px;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}button{font:inherit}.wrap{width:min(var(--max),calc(100% - 64px));margin:auto}.mono{font-family:var(--mono);letter-spacing:.04em}.muted{color:var(--muted)}
+nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 24px;border-bottom:1px solid var(--line)}.brand{font-weight:800;letter-spacing:-.07em;font-size:20px}.brand span{color:var(--accent)}.navlinks{display:flex;gap:30px;font:11px var(--mono);text-transform:uppercase;color:#aaa}.navlinks a:hover,.textlink:hover{color:var(--accent)}.navright{font:10px var(--mono);color:var(--muted)}.navend{display:flex;align-items:center;gap:18px}
+.lang{display:flex;gap:2px;font:10px var(--mono)}.lang button{background:none;border:1px solid transparent;color:#888;padding:6px 7px;cursor:pointer;letter-spacing:.08em}.lang button:hover{color:var(--text)}.lang button[aria-pressed="true"]{color:var(--accent);border-color:#333}.lang button:focus-visible{outline:1px solid var(--accent);outline-offset:1px}
+.hero{min-height:690px;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;position:relative;padding:74px 0 90px;overflow:hidden}.hero-copy{position:relative;z-index:2}.eyebrow{font:11px var(--mono);color:var(--accent);text-transform:uppercase;letter-spacing:.13em;display:flex;align-items:center;gap:12px}.eyebrow:before{content:'';width:28px;height:1px;background:var(--accent)}h1{font-size:clamp(58px,8vw,112px);line-height:.91;letter-spacing:-.09em;margin:28px 0 25px;font-weight:700}h1 span{color:#777}.intro{max-width:510px;font-size:16px;line-height:1.8;color:#aaa}.hero-actions{display:flex;align-items:center;gap:24px;margin-top:34px}.button{display:inline-flex;align-items:center;gap:12px;border:1px solid #eee;padding:14px 18px;font:11px var(--mono);text-transform:uppercase;transition:.25s}.button:hover{background:var(--text);color:#050505}.textlink{font:11px var(--mono);text-transform:uppercase;color:#aaa}.orb-wrap{height:510px;position:relative;display:grid;place-items:center;isolation:isolate}.orb-wrap:after{content:'';position:absolute;width:68%;height:18%;bottom:10%;background:#fff;filter:blur(90px);opacity:.09;z-index:-1}.orb-canvas{width:100%;height:100%;display:block;cursor:grab}.orb-label{position:absolute;bottom:30px;right:4px;font:10px var(--mono);color:#666;text-transform:uppercase;letter-spacing:.1em}
+.meta-strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr)}.meta{padding:22px 20px;border-right:1px solid var(--line)}.meta:first-child{padding-left:0}.meta:last-child{border:0}.meta b{display:block;font-size:20px;letter-spacing:-.05em}.meta small{display:block;color:var(--muted);font:10px var(--mono);margin-top:6px;text-transform:uppercase}
+section{padding:112px 0;border-bottom:1px solid var(--line)}.section-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:52px}.kicker{font:10px var(--mono);color:var(--accent);text-transform:uppercase;letter-spacing:.12em}.section-title{font-size:clamp(36px,5vw,62px);letter-spacing:-.075em;line-height:1;margin:15px 0 0}.section-note{max-width:260px;color:var(--muted);font-size:12px;line-height:1.8}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px}.about-big{font-size:clamp(23px,3vw,35px);letter-spacing:-.055em;line-height:1.4}.about-big em{font-style:normal;color:#777}.about-detail{font-size:14px;line-height:1.9;color:#999}.stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}.tag{border:1px solid #292929;padding:9px 11px;font:10px var(--mono);color:#aaa}
+.project-list{border-top:1px solid var(--line)}.project{display:grid;grid-template-columns:70px 1fr 230px;gap:24px;padding:30px 0;border-bottom:1px solid var(--line);align-items:start;transition:.25s}.project:hover .project-name{color:var(--accent)}.project-num{font:11px var(--mono);color:#666;padding-top:7px}.project-name{font-size:clamp(22px,3vw,34px);letter-spacing:-.06em;font-weight:600;transition:.2s}.project-desc{max-width:650px;color:#999;font-size:13px;line-height:1.8;margin-top:12px}.project-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:17px}.project-tags span{font:9px var(--mono);color:#777;border:1px solid #252525;padding:6px 8px}.project-stat{text-align:right}.project-stat strong{display:block;font-size:28px;letter-spacing:-.06em}.project-stat small{display:block;font:9px var(--mono);color:#777;text-transform:uppercase;line-height:1.7;margin-top:4px}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}.metric{background:var(--bg);padding:30px}.metric strong{font-size:42px;letter-spacing:-.08em}.metric p{font:10px var(--mono);text-transform:uppercase;color:#888;line-height:1.7;margin:9px 0 0}
+.timeline{border-left:1px solid #333;margin-left:8px}.event{display:grid;grid-template-columns:140px 1fr;gap:28px;padding:0 0 34px 28px;position:relative}.event:before{content:'';position:absolute;left:-5px;top:5px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 16px #d9ff6544}.event time{font:10px var(--mono);color:var(--accent);padding-top:3px}.event h3{font-size:15px;margin:0 0 7px;letter-spacing:-.03em}.event p{font-size:12px;line-height:1.7;color:#888;margin:0;max-width:650px}
+.cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.cap{border:1px solid var(--line);padding:24px;min-height:160px}.cap-index{font:10px var(--mono);color:var(--accent)}.cap h3{font-size:17px;letter-spacing:-.04em;margin:25px 0 9px}.cap p{font-size:11px;line-height:1.8;color:#888;margin:0}
+.contact{padding:120px 0 90px}.contact h2{font-size:clamp(48px,9vw,112px);line-height:.9;letter-spacing:-.09em;margin:20px 0 34px}.contact h2 span{color:#666}.contact-bottom{display:flex;justify-content:space-between;align-items:end;gap:20px}.email{font-size:clamp(15px,2vw,21px);border-bottom:1px solid #555;padding-bottom:8px}.socials{display:flex;gap:22px;font:10px var(--mono);color:#999;text-transform:uppercase}.socials a:hover{color:var(--accent)}footer{border-top:1px solid var(--line);padding:22px 0;display:flex;justify-content:space-between;font:9px var(--mono);color:#666;text-transform:uppercase}
+/* Hangul: the Latin display tracking makes Korean glyphs collide, and Korean breaks between words */
+html[lang="ko"] .section-title,html[lang="ko"] .about-big,html[lang="ko"] .project-name,html[lang="ko"] .cap h3,html[lang="ko"] .event h3,html[lang="ko"] .meta b,html[lang="ko"] .project-stat strong{letter-spacing:-.02em}
+html[lang="ko"] .section-title{line-height:1.18}html[lang="ko"] .contact h2{letter-spacing:-.03em;line-height:1.05;font-size:clamp(40px,7vw,88px)}
+html[lang="ko"] body{word-break:keep-all}
+@media(max-width:800px){.wrap{width:min(100% - 38px,var(--max))}.navlinks{gap:14px}.navright{display:none}.hero{grid-template-columns:1fr;padding:76px 0 50px;min-height:unset}.hero h1{font-size:clamp(62px,15vw,100px)}.orb-wrap{height:390px;grid-row:1;margin-bottom:10px}.hero-copy{grid-row:2}.meta-strip{grid-template-columns:repeat(2,1fr)}.meta:nth-child(2){border-right:0}.meta:nth-child(-n+2){border-bottom:1px solid var(--line)}.meta:nth-child(3){padding-left:0}.about-grid{grid-template-columns:1fr;gap:30px}.project{grid-template-columns:35px 1fr;gap:12px}.project-stat{grid-column:2;text-align:left;margin-top:5px}.project-stat strong{display:inline;font-size:20px}.project-stat small{display:inline;margin-left:8px}.metrics{grid-template-columns:1fr}.metric{padding:22px}.metric strong{font-size:36px}.cap-grid{grid-template-columns:1fr 1fr}.section-head{gap:20px}.section-note{max-width:180px}section{padding:82px 0}}
+@media(max-width:520px){nav{padding:12px 0}.navlinks{font-size:9px;gap:11px}.brand{font-size:17px}.orb-wrap{height:320px}.hero-actions{flex-wrap:wrap}.section-head{display:block}.section-note{margin-top:20px;max-width:330px}.cap-grid{grid-template-columns:1fr}.event{grid-template-columns:90px 1fr;gap:12px;padding-left:20px}.contact-bottom{display:block}.socials{margin-top:30px}footer{gap:12px;flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-
 <div class="wrap">
-
-<header class="hero">
-  <div>
-    <p class="label">AI Engineer · AI Research Developer</p>
-    <h1>Javokhir Tursunov</h1>
-    <p class="role">컴퓨터 비전 · 비디오 행동 인식 · VLM 검증 · 모델 양자화</p>
-    <p class="thesis">실제 CCTV에서 동작하는 비디오 AI를 연구하고, 그 모델을 엣지 NPU까지 직접 가져갑니다. 제가 만든 학교생활안전·화재 감지 시스템으로 회사가 KISA 지능형 CCTV 인증 2건을 받았습니다.</p>
-    <div class="contact">
-      <div>email <span>tursunovjavoxir19980218@gmail.com</span></div>
-      <div>code <a href="https://github.com/James7799/Projects">github.com/James7799/Projects</a></div>
-      <div>cv <a href="https://james7799.github.io/cv.pdf">이력서 PDF</a></div>
-    </div>
-  </div>
-  <figure class="frame">
-    <svg viewBox="0 0 640 400" role="img" aria-label="CCTV 프레임 위의 사람 감지 박스와 침입 구역, 아래는 KISA 판정 구간이 표시된 타임라인">
-      <rect x="0" y="0" width="640" height="300" rx="4" fill="var(--sunk)"/>
-      <g class="grid">
-        <line x1="0" y1="100" x2="640" y2="100"/><line x1="0" y1="200" x2="640" y2="200"/>
-        <line x1="160" y1="0" x2="160" y2="300"/><line x1="320" y1="0" x2="320" y2="300"/><line x1="480" y1="0" x2="480" y2="300"/>
-      </g>
-      <polygon points="372,92 612,120 612,286 330,286" fill="var(--alarm)" fill-opacity=".08" stroke="var(--alarm)" stroke-width="1.5" stroke-dasharray="6 4"/>
-      <text x="520" y="140" class="t" style="fill:var(--alarm)">침입 구역</text>
-      <rect x="140" y="104" width="226" height="176" fill="none" stroke="var(--ok)" stroke-width="1.5" stroke-dasharray="4 4"/>
-      <text x="144" y="98" class="t" style="fill:var(--ok)">pair crop → MViT-v2 · p(fight) 0.82</text>
-      <g fill="none" stroke="var(--box)" stroke-width="2.5">
-        <path d="M168 128 v-14 h14 M240 114 h14 v14 M254 262 v14 h-14 M182 276 h-14 v-14"/>
-        <path d="M262 136 v-14 h14 M330 122 h14 v14 M344 258 v14 h-14 M276 272 h-14 v-14"/>
-      </g>
-      <rect x="168" y="114" width="86" height="162" fill="var(--box)" fill-opacity=".07"/>
-      <rect x="262" y="122" width="82" height="150" fill="var(--box)" fill-opacity=".07"/>
-      <text x="168" y="292" class="t" style="fill:var(--box)">person 0.94</text>
-      <text x="270" y="292" class="t" style="fill:var(--box)">person 0.91</text>
-      <text x="14" y="24" class="t">S08 · 1280×720 · 10 fps</text>
-      <circle cx="606" cy="20" r="5" fill="var(--alarm)" class="scan"/>
-      <text x="560" y="24" class="t">REC</text>
-      <!-- timeline: 0..30 s over x 40..600 → 18.667 px/s; onset g = 8 s -->
-      <line x1="40" y1="352" x2="600" y2="352" class="ax"/>
-      <rect x="245.3" y="340" width="224" height="24" fill="var(--ok)" fill-opacity=".14"/>
-      <line x1="189.3" y1="332" x2="189.3" y2="372" stroke="var(--alarm)" stroke-width="2"/>
-      <text x="189.3" y="326" text-anchor="middle" class="t" style="fill:var(--alarm)">g 폭력 시작</text>
-      <polygon points="285,352 292,343 299,352 292,361" fill="var(--box)"/>
-      <text x="292" y="384" text-anchor="middle" class="t" style="fill:var(--box)">경보 g+5.5s</text>
-      <text x="357.3" y="384" text-anchor="start" class="t" style="fill:var(--ok)"> 적중 구간 g+3 ~ g+15</text>
-      <text x="40" y="384" class="t">0s</text>
-      <text x="600" y="384" text-anchor="end" class="t">30s</text>
-    </svg>
-    <figcaption>KISA 판정 규칙: 경보가 사건 시작 g 이후 3~15초 안에 나와야 적중으로 인정됩니다. 그림은 설명용 도식이며 실제 영상이 아닙니다.</figcaption>
-  </figure>
-</header>
-
-<div class="facts">
-  <div><b>2건</b><small>KISA 지능형 CCTV 인증 기여 (학교생활안전, 화재·연기)</small></div>
-  <div><b>96.6</b><small>학교생활안전 Combined F1, CPU 사용률 1% 미만</small></div>
-  <div><b>3종</b><small>배포한 NPU 계열: Jetson TensorRT, DEEPX DX-M1, Ambarella CV2S</small></div>
-  <div><b>0 → 0.9948</b><small>CV2S INT8 오류 원인 규명 후 FP32 대비 상관계수</small></div>
+<nav><a class="brand" href="#top">JT<span>.</span></a><div class="navlinks"><a href="#about" data-i18n="nav.about">About</a><a href="#work" data-i18n="nav.work">Selected work</a><a href="#experience" data-i18n="nav.timeline">Timeline</a><a href="#contact" data-i18n="nav.contact">Contact</a></div><div class="navend"><div class="navright" data-i18n="nav.right">AVAILABLE FOR RESEARCH ROLES ↗</div><div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="ko" aria-pressed="false">KO</button><button type="button" data-lang="uz" aria-pressed="false">UZ</button></div></div></nav>
+<main id="top">
+<section class="hero" style="border:0;padding-top:54px">
+<div class="hero-copy"><div class="eyebrow" data-i18n="hero.eyebrow">AI Engineer · Computer Vision</div><h1>JAVOKHIR<br><span>TURSUNOV.</span></h1><p class="intro" data-i18n="hero.intro">I build real-time video understanding systems — from training and evaluating vision models to optimizing and deploying them on edge AI hardware.</p><div class="hero-actions"><a class="button" href="#work" data-i18n="hero.button">Explore selected work <span>↘</span></a><a class="textlink" href="https://james7799.github.io/cv.pdf" target="_blank" rel="noreferrer" data-i18n="hero.resume">View résumé ↗</a></div></div>
+<div class="orb-wrap"><canvas id="orb" class="orb-canvas" aria-label="Animated white particle sphere"></canvas><div class="orb-label" data-i18n="hero.orb">01 / VIDEO INTELLIGENCE — PARTICLE FIELD</div></div>
+</section>
+<div class="meta-strip"><div class="meta"><b>96.6</b><small data-i18n="meta.1">Combined F1 · KISA evaluation</small></div><div class="meta"><b>0.9948</b><small data-i18n="meta.2">INT8 / FP32 correlation</small></div><div class="meta"><b>0.28 → 0.82</b><small data-i18n="meta.3">Person recall improvement</small></div><div class="meta"><b data-i18n="meta.4b">4 channels</b><small data-i18n="meta.4">RK3588 + DEEPX deployment</small></div></div>
+<section id="about"><div class="section-head"><div><div class="kicker" data-i18n="about.kicker">01 — Profile</div><h2 class="section-title" data-i18n="about.title">Research meets<br>real-world systems.</h2></div><p class="section-note" data-i18n="about.note">Malgeun ST Co., Ltd. · AI Engineer<br>South Korea</p></div><div class="about-grid"><div class="about-big" data-i18n="about.big">I work across the full AI lifecycle: <em>data, model research, evaluation, optimization, and edge deployment.</em></div><div><p class="about-detail" data-i18n="about.d1">My focus is video understanding for intelligent CCTV: recognizing violence and falls, detecting fire and smoke, and using vision-language models to verify alarms before they reach a monitoring system. I have delivered certified intelligent CCTV systems and deployed optimized pipelines on Jetson, DEEPX, Ambarella, and Rockchip platforms.</p><p class="about-detail" data-i18n="about.d2">I am currently looking for an opportunity at an AI research institute to contribute to video understanding, efficient models, and practical multimodal AI.</p><div class="stack"><span class="tag">PyTorch</span><span class="tag">Computer Vision</span><span class="tag">Video Understanding</span><span class="tag">VLM / Qwen3-VL</span><span class="tag">C++</span><span class="tag">TensorRT</span><span class="tag">ONNX / QAT</span><span class="tag">Edge AI</span><span class="tag">Three.js</span></div></div></div></section>
+<section id="work"><div class="section-head"><div><div class="kicker" data-i18n="work.kicker">02 — Selected work</div><h2 class="section-title" data-i18n="work.title">Built, tested,<br>deployed.</h2></div><p class="section-note" data-i18n="work.note">Selected projects from intelligent surveillance, edge inference, and applied computer vision.</p></div>
+<div class="project-list">
+<article class="project"><div class="project-num">01</div><div><div class="project-name" data-i18n="p1.name">School life safety &amp; violence recognition</div><p class="project-desc" data-i18n="p1.desc">Built a real-time RTSP system for loitering, intrusion, and violence detection. Created a 150-video evaluation set with scene-level separation, compared MViT-v2, Keypoint TCN, and Frame CNN, and fixed false alerts triggered by normal footage around event timelines. The system achieved a combined F1 of 96.6 in KISA certification evaluation.</p><div class="project-tags"><span>KISA CERTIFICATION</span><span>MViT-V2</span><span>KEYPOINT TCN</span><span>VIDEO AI</span></div></div><div class="project-stat"><strong>96.6 F1</strong><small data-i18n="p1.stat">Combined certification evaluation</small></div></article>
+<article class="project"><div class="project-num">02</div><div><div class="project-name" data-i18n="p2.name">Fire &amp; smoke detection</div><p class="project-desc" data-i18n="p2.desc">Trained a D-FINE detector on 17,769 images and reached COCO AP@.5:.95 of 0.7985. Reduced difficult false positives such as sunsets and lighting using stationary-object suppression, temporal rules, and CLIP/VLM verification. The system passed KISA certification in June 2026.</p><div class="project-tags"><span>D-FINE</span><span>CLIP / VLM</span><span>FALSE-POSITIVE CONTROL</span></div></div><div class="project-stat"><strong>0.7985</strong><small>COCO AP@.5:.95</small></div></article>
+<article class="project"><div class="project-num">03</div><div><div class="project-name" data-i18n="p3.name">VLM verification for fall &amp; violence alerts</div><p class="project-desc" data-i18n="p3.desc">Integrated Qwen3-VL on Jetson Orin NX to review the six seconds preceding each TCN alert. In a test set, it filtered 25 of 32 false-positive alerts, taking about three seconds per alert. Quantization experiments showed Q4_K_M performed better than Q8_0 for violence recognition in the tested setup.</p><div class="project-tags"><span>JETSON ORIN NX</span><span>QWEN3-VL</span><span>VLM</span><span>ALERT VERIFICATION</span></div></div><div class="project-stat"><strong>25 / 32</strong><small data-i18n="p3.stat">False alerts filtered in test</small></div></article>
+<article class="project"><div class="project-num">04</div><div><div class="project-name" data-i18n="p4.name">INT8 quantization &amp; edge NPU deployment</div><p class="project-desc" data-i18n="p4.desc">Worked across Ambarella CV2S, DEEPX DX-M1, and Jetson TensorRT. Diagnosed a constant INT8 output caused by a test-code dtype mismatch (float32 written into an int16 slot), restoring output correlation to 0.9948. Pose QAT maintained accuracy, with PCK@0.05 improving from 86.94 to 87.14. Reimplemented LSTM behavior with basic operations for NPUs without native LSTM support.</p><div class="project-tags"><span>AMBARELLA CV2S</span><span>DEEPX DX-M1</span><span>INT8</span><span>QAT</span><span>TENSORRT</span></div></div><div class="project-stat"><strong>0.9948</strong><small data-i18n="p4.stat">INT8 / FP32 correlation</small></div></article>
+<article class="project"><div class="project-num">05</div><div><div class="project-name" data-i18n="p5.name">Multi-camera real-time fall detection</div><p class="project-desc" data-i18n="p5.desc">Developed a pipeline combining person detection, pose estimation, 83-dimensional motion features, and causal TCN. Collected hard negatives from live camera feeds and checked feature/output parity after model changes. The earlier LSTM version reached 97.5–99% accuracy on NTU RGB+D 120.</p><div class="project-tags"><span>POSE ESTIMATION</span><span>TCN</span><span>NTU RGB+D 120</span><span>REAL-TIME CCTV</span></div></div><div class="project-stat"><strong data-i18n="p5.strong">2 cameras</strong><small data-i18n="p5.stat">Continuous on-site operation</small></div></article>
+<article class="project"><div class="project-num">06</div><div><div class="project-name" data-i18n="p6.name">Rainfall intensity estimation from CCTV</div><p class="project-desc" data-i18n="p6.desc">Investigated domain leakage after discovering that the initial model learned wet-wall appearance rather than rain streaks. Evaluated camera-specific AdaBN, which reduced clear-day false-positive probability on hospital cameras from 0.91 to 0.05. Results on the Wanju camera remain under investigation.</p><div class="project-tags"><span>DOMAIN ADAPTATION</span><span>ADABN</span><span>29K GAUGE LABELS</span></div></div><div class="project-stat"><strong>0.91 → 0.05</strong><small data-i18n="p6.stat">Clear-day false-positive probability</small></div></article>
+<article class="project"><div class="project-num">07</div><div><div class="project-name" data-i18n="p7.name">Dataset engineering &amp; leakage checks</div><p class="project-desc" data-i18n="p7.desc">Collected 82,426 bag, glasses, and hat crops from approximately 55 hours of footage across three cameras. Built an automatic-labeling and human-review workflow for 1,441 lying-person frames. Found train/validation leakage of 52% and 85% in separate projects and corrected it with group-based splitting.</p><div class="project-tags"><span>DATASET TOOLING</span><span>HUMAN REVIEW</span><span>GROUP SPLIT</span></div></div><div class="project-stat"><strong>82,426</strong><small data-i18n="p7.stat">Object crops collected</small></div></article>
+<article class="project"><div class="project-num">08</div><div><div class="project-name" data-i18n="p8.name">Edge AI box firmware &amp; production pipeline</div><p class="project-desc" data-i18n="p8.desc">Built and released Jetson Orin NX AIBOX firmware v1.0.3–v1.1.0 using Yocto and RAUC. Added VLM verification to an ONVIF Profile M gateway, ported RK3588 + DEEPX tracking/fall/violence pipelines to a C++ daemon (four channels, 9–10 FPS per channel), and implemented LAN mDNS leader election and per-channel RTSP reconnection.</p><div class="project-tags"><span>YOCTO / RAUC</span><span>ONVIF PROFILE M</span><span>C++</span><span>RK3588</span><span>MDNS</span></div></div><div class="project-stat"><strong>4 × 9–10</strong><small data-i18n="p8.stat">Channels × FPS per channel</small></div></article>
+</div></section>
+<section><div class="section-head"><div><div class="kicker" data-i18n="num.kicker">03 — Engineering impact</div><h2 class="section-title" data-i18n="num.title">Numbers that<br>matter.</h2></div><p class="section-note" data-i18n="num.note">Measured results from model evaluation and field-oriented engineering work.</p></div><div class="metrics"><div class="metric"><strong>96.6</strong><p data-i18n="num.1">Combined F1<br>School safety KISA evaluation</p></div><div class="metric"><strong>0.9948</strong><p data-i18n="num.2">Correlation coefficient<br>INT8 output vs FP32</p></div><div class="metric"><strong>0.28 → 0.82</strong><p data-i18n="num.3">Person recall<br>After retraining and DEEPX INT8 deployment</p></div><div class="metric"><strong>25 / 32</strong><p data-i18n="num.4">False positives filtered<br>Qwen3-VL alert verification test</p></div><div class="metric"><strong>86.94 → 87.14</strong><p data-i18n="num.5">PCK@0.05<br>Pose QAT result</p></div><div class="metric"><strong>0.91 → 0.05</strong><p data-i18n="num.6">Clear-day false-positive probability<br>Hospital camera after AdaBN</p></div></div></section>
+<section id="experience"><div class="section-head"><div><div class="kicker" data-i18n="tl.kicker">04 — Timeline</div><h2 class="section-title" data-i18n="tl.title">A record of<br>building things.</h2></div><p class="section-note" data-i18n="tl.note">Selected milestones · 2024—2026</p></div><div class="timeline">
+<div class="event"><time>2026.10</time><div><h3 data-i18n="e1.h">AIBOX security audit and firmware v1.1.0</h3><p data-i18n="e1.p">Audited firmware security and stability, prepared a fix patch, and released the v1.1.0 update.</p></div></div>
+<div class="event"><time>2026.10</time><div><h3 data-i18n="e2.h">VLM alert verification on Jetson Orin NX</h3><p data-i18n="e2.p">Used Qwen3-VL to re-check fall and violence alerts and forward verified events to VMS.</p></div></div>
+<div class="event"><time>2026.10</time><div><h3 data-i18n="e3.h">RK3588 + DEEPX pipelines ported to C++</h3><p data-i18n="e3.p">Moved tracking, fall, and violence pipelines to a multi-channel C++ daemon.</p></div></div>
+<div class="event"><time>2026.06</time><div><h3 data-i18n="e4.h">Fire and smoke system passed KISA certification</h3><p data-i18n="e4.p">Delivered the certified fire and smoke detection system.</p></div></div>
+<div class="event"><time>2026.02</time><div><h3 data-i18n="e5.h">Joined Malgeun ST Co., Ltd.</h3><p data-i18n="e5.p">Joined the AI research team as an AI/ML researcher, developing intelligent CCTV and edge AI systems.</p></div></div>
+<div class="event"><time>2025.03</time><div><h3 data-i18n="e6.h">Completed AI-Masters Bootcamp</h3><p data-i18n="e6.p">Completed an eight-month program in deep learning and computer vision.</p></div></div>
+<div class="event"><time>2024.08</time><div><h3 data-i18n="e7.h">Graduated from Gachon University (Global)</h3><p data-i18n="e7.p">Bachelor's degree in Computer Engineering.</p></div></div>
+</div></section>
+<section><div class="section-head"><div><div class="kicker" data-i18n="cap.kicker">05 — Capabilities</div><h2 class="section-title" data-i18n="cap.title">From pixels<br>to production.</h2></div></div><div class="cap-grid"><div class="cap"><div class="cap-index" data-i18n="c1.i">01 / RESEARCH</div><h3 data-i18n="c1.h">Video understanding</h3><p data-i18n="c1.p">Action recognition, violence and fall detection, temporal modeling, pose-based features, and evaluation design.</p></div><div class="cap"><div class="cap-index" data-i18n="c2.i">02 / VISION</div><h3 data-i18n="c2.h">Detection &amp; perception</h3><p data-i18n="c2.p">Object detection, fire/smoke detection, dataset curation, hard-negative mining, and false-positive analysis.</p></div><div class="cap"><div class="cap-index" data-i18n="c3.i">03 / MULTIMODAL</div><h3 data-i18n="c3.h">VLM verification</h3><p data-i18n="c3.p">Qwen3-VL and CLIP-based verification workflows for reviewing alerts and reducing false alarms.</p></div><div class="cap"><div class="cap-index" data-i18n="c4.i">04 / OPTIMIZATION</div><h3 data-i18n="c4.h">Efficient inference</h3><p data-i18n="c4.p">ONNX, INT8, QAT, TensorRT, quantization debugging, and operator-level adaptation for NPUs.</p></div><div class="cap"><div class="cap-index" data-i18n="c5.i">05 / EDGE</div><h3 data-i18n="c5.h">Embedded deployment</h3><p data-i18n="c5.p">Jetson Orin NX, DEEPX DX-M1, Ambarella CV2S, RK3588, firmware, and production pipelines.</p></div><div class="cap"><div class="cap-index" data-i18n="c6.i">06 / SYSTEMS</div><h3 data-i18n="c6.h">Software engineering</h3><p data-i18n="c6.p">C++, Python, RTSP, ONVIF, FastAPI, Yocto, RAUC, Linux, and multi-camera services.</p></div></div></section>
+<section class="contact" id="contact"><div class="kicker" data-i18n="ct.kicker">06 — Contact</div><h2 data-i18n="ct.title">Let's build<br><span>what's next.</span></h2><div class="contact-bottom"><div><p class="muted" style="font-size:13px;margin:0 0 15px" data-i18n="ct.note">Open to AI research opportunities in video understanding and efficient edge AI.</p><a class="email" href="mailto:tursunovjavoxir19980218@gmail.com">tursunovjavoxir19980218@gmail.com ↗</a></div><div class="socials"><a href="https://github.com/James7799" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://james7799.github.io/cv.pdf" target="_blank" rel="noreferrer" data-i18n="ct.resume">Résumé ↗</a></div></div></section>
+</main><footer><span>© 2026 Javokhir Tursunov</span><span data-i18n="ft.role">AI ENGINEER / COMPUTER VISION</span><a href="#top" data-i18n="ft.top">BACK TO TOP ↑</a></footer>
 </div>
-
-<section class="block" id="news">
-  <h2>소식</h2>
-  <ul class="news">
-    <li><time>2026 하반기</time><span>학교생활안전(배회·침입·폭력) 시스템으로 회사가 KISA 지능형 CCTV 인증을 취득했습니다.</span></li>
-    <li><time>2026.10</time><span>AIBOX 펌웨어 v1.1.0 보안·안정성 감사를 주도하고 발견한 문제의 수정 패치를 준비했습니다.</span></li>
-    <li><time>2026.10</time><span>LAN의 첫 AI 박스가 findnexai.local 포털을 맡는 mDNS 선출 기능을 만들었습니다. 호스트가 빠지면 7초 안에 다른 박스가 이어받습니다.</span></li>
-    <li><time>2026.10</time><span>AIBOX 펌웨어 v1.0.3~v1.1.0을 릴리스했습니다. 탐지 점수 설정, 날짜·시간 설정, 채널별 RTSP 자동 재연결(8.5초)이 들어갔습니다.</span></li>
-    <li><time>2026.10</time><span>Jetson Orin NX에서 Qwen3-VL로 낙상·폭력 경보를 재확인하고, 확인된 경보만 ONVIF로 VMS에 보내도록 했습니다.</span></li>
-    <li><time>2026.10</time><span>Mini AIBOX(RK3588 + DEEPX DX-M1)를 공식 Yocto 이미지로 옮기고, 추적·낙상·폭력 파이프라인을 C++ 데몬으로 포팅했습니다.</span></li>
-    <li><time>2026.10</time><span>누운 사람을 놓치던 감지기를 재학습해 DEEPX INT8로 배포했습니다. 사람 recall이 0.28에서 0.82로 올랐습니다.</span></li>
-    <li><time>2026.10</time><span>AI Hub 지능형 관제 CCTV 데이터(269개 영상)를 정리해 낙상·폭력·침수 단계 평가에 쓰기 시작했습니다.</span></li>
-  </ul>
-  <details class="more">
-    <summary>이전 소식 보기</summary>
-    <ul class="news">
-      <li><time>2026.09</time><span>누운 사람 데이터셋 1,441프레임을 감지기와 LocateAnything 자동 라벨, 사람 검수로 만들었습니다.</span></li>
-      <li><time>2026.09</time><span>감지기를 Ambarella CV2S .bin으로 변환하는 파이프라인과 베타 모델의 QAT ONNX 재익스포트를 진행했습니다.</span></li>
-      <li><time>2026.09</time><span>CCTV 기반 강우 강도 추정 프로젝트를 맡아 첫 모델을 학습하고, ablation으로 모델이 비가 아닌 벽면의 젖은 모습을 배웠음을 밝혔습니다.</span></li>
-      <li><time>2026.09</time><span>폭력 인식 평가 세트 150개를 만들고 MViT-v2, 키포인트 TCN, 프레임 CNN 세 계열을 중첩 교차검증으로 비교했습니다.</span></li>
-      <li><time>2026.08</time><span>ROCK 5B+와 DEEPX DX-M1(25 TOPS)로 엣지 AI 박스를 구성하고 모델을 두 NPU에 나눠 배치했습니다.</span></li>
-      <li><time>2026.08</time><span>현장 카메라 2대에서 낙상·폭력 감지를 상시 운영하며 실제 오탐으로 모델을 개선하기 시작했습니다.</span></li>
-      <li><time>2026.08</time><span>액세서리(가방·안경·모자) 데이터셋 82,426개 crop을 RTSP로 수집했고, 차량 색상 데이터를 Qwen-VL로 재라벨링했습니다.</span></li>
-      <li><time>2026.06</time><span>화재·연기 감지 시스템(D-FINE + VLM/CLIP 검증)이 KISA 인증을 통과했습니다.</span></li>
-      <li><time>2026.05</time><span>대드론(counter-UAV) 그물 포획 드론의 온보드 비전 설계를 시작했습니다.</span></li>
-      <li><time>2026 상반기</time><span>Ambarella CV2S에 pose·segmentation·LSTM 모델을 INT8로 배포하고, int16/float32 입력 불일치를 찾아 상관계수를 0.9948로 올렸습니다.</span></li>
-      <li><time>2026.02</time><span>주식회사맑은에스티 AI/ML 연구원으로 입사했습니다.</span></li>
-      <li><time>2025.03</time><span>AI-Masters Bootcamp(딥러닝·컴퓨터 비전 8개월 과정)를 수료했습니다.</span></li>
-      <li><time>2024.08</time><span>가천대학교(글로벌) 컴퓨터공학계열을 졸업했습니다.</span></li>
-    </ul>
-  </details>
-</section>
-
-<section class="block" id="research">
-  <h2>연구·개발 사례</h2>
-  <p class="lead">주식회사맑은에스티 AI/ML 연구원(2026.02 ~ 재직 중)으로 수행한 작업입니다. 모든 수치는 학습 데이터와 겹치지 않는 평가 세트에서 측정했습니다.</p>
-
-  <article class="case">
-    <aside class="rail">
-      <div class="tags"><span class="tag cert">KISA 인증</span><span class="tag">비디오 행동 인식</span><span class="tag">RTX 5070</span></div>
-      <div class="stat"><b class="mono">F1 96.6</b><small>배회·침입·폭력 복합 평가</small></div>
-      <div class="stat"><b class="mono">150 clips</b><small>폭력 119 · 정상 31, 장면 단위 4-fold</small></div>
-    </aside>
-    <div class="body">
-      <h3>학교 폭력 비디오 행동 인식 · 학교생활안전 CCTV</h3>
-      <dl class="pab">
-        <div><dt>문제</dt><dd>학교 CCTV에서 배회·침입·폭력을 실시간으로 판정해야 하며, 경보는 사건 시작 후 3~15초 안에 나와야 합니다. 같은 카메라 장면이 학습과 평가에 섞이면 성능이 부풀려집니다.</dd></div>
-        <div><dt>접근</dt><dd>배회·침입은 사람 감지와 카메라별 구역 규칙으로, 폭력은 세 가지 모델 계열을 같은 중첩 교차검증 프로토콜에서 비교해 결정했습니다. 사건 시점 중심 구간으로만 학습한 시간 모델이 위치 사전확률을 배워 정상 영상 31개 모두에서 경보를 내는 문제를 찾아, 전체 영상 캐시와 무작위 시작 구간 학습으로 고쳤습니다.</dd></div>
-        <div><dt>결과</dt><dd>사람 쌍 crop MViT-v2-S 앙상블을 배포했고, ffmpeg 무손실 녹화와 raw-PTS 보정으로 패킷 손실을 견디는 실시간 파이프라인에서 Combined F1 96.6을 기록했습니다.</dd></div>
-      </dl>
-      <figure class="chart">
-        <svg id="vio" viewBox="0 0 680 168" role="img" aria-label="세 가지 폭력 인식 접근의 탐지 수와 오경보 수 비교"></svg>
-        <figcaption>중첩 4-fold 교차검증. 오경보는 정상 영상 31개 중 경보가 난 영상 수(임계값 0.5), 범위는 시드별 결과입니다. TCN은 탐지가 적지만 오경보가 가장 적어, 탐지와 오경보 사이의 선택을 보여줍니다.</figcaption>
-      </figure>
-    </div>
-  </article>
-
-  <article class="case">
-    <aside class="rail">
-      <div class="tags"><span class="tag cert">KISA 인증</span><span class="tag">객체 감지</span><span class="tag">2× RTX 5090</span></div>
-      <div class="stat"><b class="mono">AP 0.7985</b><small>COCO AP@.5:.95, D-FINE</small></div>
-      <div class="stat"><b class="mono">17,769</b><small>학습 이미지 수</small></div>
-    </aside>
-    <div class="body">
-      <h3>화재·연기 감지</h3>
-      <dl class="pab">
-        <div><dt>문제</dt><dd>화재 감지기는 노을, 조명, 수증기에도 반응합니다. 감지기 점수만으로는 인증 기준의 오탐 한도를 넘습니다.</dd></div>
-        <div><dt>접근</dt><dd>D-FINE을 EMA와 CopyPaste 증강으로 학습하고, 시간 축 규칙과 VLM/CLIP 검증을 단계적으로 붙였습니다. 움직이지 않는 객체와 화면 드리프트는 억제하고, 화재와 연기가 2초 동시에 보이면 검증 없이 바로 경보합니다.</dd></div>
-        <div><dt>결과</dt><dd>2026년 6월 KISA 인증 통과.</dd></div>
-      </dl>
-      <div class="flow" aria-label="화재 감지 파이프라인">
-        <span>RTSP</span><i>→</i><span>D-FINE</span><i>→</i><span>초 단위 집계</span><i>→</i><span>정적·드리프트 억제</span><i>→</i><span class="v">VLM/CLIP 검증</span><i>→</i><span>에피소드 경보</span>
-      </div>
-    </div>
-  </article>
-
-  <article class="case">
-    <aside class="rail">
-      <div class="tags"><span class="tag">VLM</span><span class="tag">llama.cpp</span><span class="tag">Jetson Orin NX</span></div>
-      <div class="stat"><b class="mono">25 / 32</b><small>오탐 알람 거부, 알람당 약 3초</small></div>
-      <div class="stat"><b class="mono">Qwen3-VL</b><small>Q4_K_M + mmproj, 온디바이스</small></div>
-    </aside>
-    <div class="body">
-      <h3>온디바이스 VLM 알람 검증</h3>
-      <dl class="pab">
-        <div><dt>문제</dt><dd>포즈 기반 TCN은 나란히 걷는 사람이나 앉는 동작을 폭력·낙상으로 오인합니다. 박스의 메모리는 8 GB로, 4채널 추론과 VLM이 함께 들어가야 합니다.</dd></div>
-        <div><dt>접근</dt><dd>TCN 경보마다 경보 전 6초 구간을 VLM이 다시 보고 확인 또는 거부합니다. 정확도를 우선해 모든 경보에 판정을 내리고, 확인된 경보만 VMS로 보냅니다. 양자화 수준별 판정 정확도를 같은 경보 세트로 비교했습니다.</dd></div>
-        <div><dt>결과</dt><dd>Q4_K_M이 Q8_0보다 폭력 확인 recall이 높았고, 낙상에서는 '불확실' 판정이 늘어나는 비용을 측정했습니다.</dd></div>
-      </dl>
-      <figure class="chart">
-        <svg id="vlm" viewBox="0 0 680 112" role="img" aria-label="양자화 수준별 폭력 경보 확인 수"></svg>
-        <figcaption>실제 폭력 경보 19건 중 VLM이 확인한 수. 같은 경보 세트, Jetson Orin NX 8 GB.</figcaption>
-      </figure>
-    </div>
-  </article>
-
-  <article class="case">
-    <aside class="rail">
-      <div class="tags"><span class="tag">INT8 PTQ/QAT</span><span class="tag">CV2S</span><span class="tag">DX-M1</span><span class="tag">TensorRT</span></div>
-      <div class="stat"><b class="mono">86.94 → 87.14</b><small>Pose PCK@0.05, FP32 → INT8 QAT</small></div>
-      <div class="stat"><b class="mono">0.28 → 0.82</b><small>누운 사람 recall, DEEPX INT8 배포 후</small></div>
-    </aside>
-    <div class="body">
-      <h3>모델 양자화와 이기종 NPU 배포</h3>
-      <dl class="pab">
-        <div><dt>문제</dt><dd>Ambarella CV2S에서 INT8 모델 출력이 상수로 고정됐고, 컴파일러와 모델이 의심받고 있었습니다. 다른 장비에서는 넘어진 사람을 감지기가 놓쳐 낙상 판정이 시작되지 않았습니다.</dd></div>
-        <div><dt>접근</dt><dd>최소 재현 코드로 원인을 좁혀, 테스트 하니스가 int16 입력 자리에 float32를 넣고 있었음을 밝혔습니다. LSTM 미지원 NPU에는 LSTM을 Gemm·Sigmoid·Tanh로 직접 풀어 배포했습니다. 감지기는 누운 사람 데이터로 재학습해 DEEPX DX-COM으로 INT8 변환하고, FP32 일치도와 사람 라벨 양쪽으로 검증했습니다.</dd></div>
-        <div><dt>결과</dt><dd>CV2S 상관계수 약 0 → 0.9948. Segmentation QAT는 mAP50-95 약 1.6% 하락에 그침. 누운 사람 감지는 정밀도 0.98, INT8/FP32 일치도 0.994.</dd></div>
-      </dl>
-    </div>
-  </article>
-
-  <article class="case">
-    <aside class="rail">
-      <div class="tags"><span class="tag">포즈 + TCN</span><span class="tag">GStreamer</span><span class="tag">상시 운영</span></div>
-      <div class="stat"><b class="mono">83-dim</b><small>속도·가속도·자세 기하 특징</small></div>
-      <div class="stat"><b class="mono">97.5~99%</b><small>이전 LSTM, NTU RGB+D 120</small></div>
-    </aside>
-    <div class="body">
-      <h3>실시간 다중 카메라 낙상 감지</h3>
-      <dl class="pab">
-        <div><dt>문제</dt><dd>책상 앞에 앉는 동작이나 몸을 숙이는 동작이 반복적으로 낙상 경보를 냈습니다.</dd></div>
-        <div><dt>접근</dt><dd>두 현장 카메라에서 파이프라인을 상시 운영하며 자동 저장된 오탐 사례를 모으고, 새 모델이 올 때마다 특징 계산과 TCN 출력이 원본과 비트 단위로 같은지 확인한 뒤 교체했습니다.</dd></div>
-        <div><dt>결과</dt><dd>엉덩이 좌표 흔들림 버그와 운동량 게이트 문제를 실제 오탐에서 찾아 수정했습니다.</dd></div>
-      </dl>
-      <div class="flow" aria-label="낙상 감지 파이프라인">
-        <span>GStreamer 캡처</span><i>→</i><span>YOLO 사람</span><i>→</i><span>YOLO 포즈</span><i>→</i><span>IoU 추적</span><i>→</i><span>83차원 특징</span><i>→</i><span class="v">causal TCN</span>
-      </div>
-    </div>
-  </article>
-
-  <article class="case">
-    <aside class="rail">
-      <div class="tags"><span class="tag">진행 중</span><span class="tag">ablation</span><span class="tag">domain shift</span></div>
-      <div class="stat"><b class="mono">&lt; 0.04</b><small>빗줄기 채널 제거 시 출력 변화</small></div>
-      <div class="stat"><b class="mono">2.9만</b><small>강우계 측정값, 자동 라벨</small></div>
-    </aside>
-    <div class="body">
-      <h3>CCTV 기반 강우 강도 추정</h3>
-      <dl class="pab">
-        <div><dt>문제</dt><dd>침수 위험 경보를 위해 CCTV 한 장으로 시간당 강우량을 추정합니다. 라벨은 같은 장소의 강우계가 자동으로 붙입니다.</dd></div>
-        <div><dt>접근</dt><dd>첫 모델의 입력에서 빗줄기 채널을 지워 보니 출력이 0.04 미만으로만 변했습니다. 모델이 비가 아니라 학습 현장 벽면의 젖은 모습을 배웠다는 뜻입니다. 정답이 없는 새 카메라에서는 카메라별 AdaBN이 가장 효과가 컸습니다.</dd></div>
-        <div><dt>결과</dt><dd>맑은 날 오탐 확률이 두 카메라에서 크게 줄었지만, 한 카메라는 거의 그대로여서 다음 실험 방향을 정했습니다.</dd></div>
-      </dl>
-      <figure class="chart">
-        <svg id="rain" viewBox="0 0 680 150" role="img" aria-label="카메라별 AdaBN 적용 전후 맑은 날 강우 확률"></svg>
-        <figcaption>비가 오지 않을 때 모델이 낸 강우 확률. 낮을수록 좋습니다.</figcaption>
-      </figure>
-    </div>
-  </article>
-</section>
-
-<section class="block" id="software">
-  <h2>업무 중 개발한 소프트웨어</h2>
-  <p class="lead">연구 결과를 제품에 넣기 위해 함께 개발한 시스템입니다.</p>
-  <div class="cols">
-    <div class="item"><b>AIBOX 펌웨어 · Jetson Orin NX</b><p>Yocto + RAUC 기반 v1.0.3~v1.1.0 빌드·릴리스, 웹 UI A/B OTA 업데이트.</p></div>
-    <div class="item"><b>ONVIF Profile M 게이트웨이 (C)</b><p>VLM 게이트를 추가해 확인된 낙상·폭력 알람만 VMS로 전달.</p></div>
-    <div class="item"><b>Mini AIBOX · RK3588 + DEEPX DX-M1</b><p>추적·낙상·폭력 파이프라인을 Python에서 C++ 데몬으로 포팅. 4채널, 채널당 9~10 fps, CPU 약 1.5코어, 350 MB.</p></div>
-    <div class="item"><b>네트워크 기능</b><p>LAN 첫 박스가 findnexai.local 포털을 맡는 mDNS 선출(7초 내 승계), 채널별 RTSP 재연결(8.5초).</p></div>
-    <div class="item"><b>보안 감사</b><p>펌웨어 v1.1.0 보안·안정성 감사를 주도하고 발견한 문제의 수정 패치를 준비.</p></div>
-    <div class="item"><b>개발 자동화</b><p>사내 GPU 서버의 vLLM 로컬 LLM과 여러 코딩 에이전트를 잇는 메시지 허브(FastAPI).</p></div>
-  </div>
-</section>
-
-<section class="block" id="skills">
-  <h2>기술과 배경</h2>
-  <div class="skills-wrap">
-    <table class="skills">
-      <tr><th>연구</th><td>비디오 행동 인식, 객체 감지, 포즈 추정, VLM 검증, 양자화·경량화</td></tr>
-      <tr><th>모델</th><td>YOLOv8 det/seg/pose, D-FINE, MViT-v2, TCN, LSTM, MobileNetV2, ResNet, Qwen3-VL, Gemma, CLIP</td></tr>
-      <tr><th>평가 방식</th><td>장면 단위 중첩 교차검증, 누수 점검(52%·85% 누수 발견), FP32 대비 INT8 일치도, ablation</td></tr>
-      <tr><th>배포</th><td>ONNX, TensorRT, DEEPX DX-COM/DXRT, RKNN, Ambarella cavalry, llama.cpp, vLLM</td></tr>
-      <tr><th>시스템</th><td>Python, C/C++, GStreamer, ffmpeg, RTSP/ONVIF, Yocto, Docker, FastAPI, PostgreSQL</td></tr>
-      <tr><th>학력</th><td>가천대학교(글로벌) 컴퓨터공학계열 졸업, 2024.08 · AI-Masters Bootcamp, 2024.08 ~ 2025.03</td></tr>
-      <tr><th>언어</th><td>우즈베크어(모국어), 영어 IELTS 6.5, 한국어 국어능력인증시험 2급</td></tr>
-    </table>
-  </div>
-</section>
-
-<footer>
-  <div>Javokhir Tursunov · AI Engineer</div>
-  <div class="mono">tursunovjavoxir19980218@gmail.com</div>
-</footer>
-</div>
-
 <script>
 (function () {
-  var NS = "http://www.w3.org/2000/svg";
-  function el(name, attrs, text) {
-    var n = document.createElementNS(NS, name);
-    for (var k in attrs) n.setAttribute(k, attrs[k]);
-    if (text != null) n.textContent = text;
-    return n;
-  }
-  // Horizontal bars on one linear scale per panel; optional [lo, hi] whisker around the bar end.
-  function panel(svg, x0, width, max, ticks, rows, title, cls) {
-    var sx = function (v) { return x0 + v / max * width; };
-    svg.appendChild(el("text", { x: x0, y: 14, "class": "t" }, title));
-    ticks.forEach(function (t) {
-      svg.appendChild(el("line", { x1: sx(t), y1: 24, x2: sx(t), y2: 24 + rows.length * 34, "class": "grid" }));
-      svg.appendChild(el("text", { x: sx(t), y: 38 + rows.length * 34, "text-anchor": "middle", "class": "t" }, t));
+  var T = {
+    ko: {
+      "meta.title": "Javokhir Tursunov — AI 엔지니어",
+      "meta.desc": "Javokhir Tursunov, 실시간 비디오 이해 시스템과 엣지 AI를 만드는 AI 엔지니어.",
+      "nav.about": "소개", "nav.work": "프로젝트", "nav.timeline": "이력", "nav.contact": "연락처",
+      "nav.right": "연구직 지원 가능 ↗",
+      "hero.eyebrow": "AI 엔지니어 · 컴퓨터 비전",
+      "hero.intro": "실시간 비디오 이해 시스템을 만듭니다. 비전 모델의 학습과 평가부터 최적화, 엣지 AI 하드웨어 배포까지 직접 합니다.",
+      "hero.button": "주요 프로젝트 보기 <span>↘</span>", "hero.resume": "이력서 보기 ↗",
+      "hero.orb": "01 / 비디오 인텔리전스 — 파티클 필드",
+      "meta.1": "Combined F1 · KISA 평가", "meta.2": "INT8 / FP32 상관계수", "meta.3": "사람 recall 향상",
+      "meta.4b": "4채널", "meta.4": "RK3588 + DEEPX 배포",
+      "about.kicker": "01 — 프로필", "about.title": "연구와 실제 시스템을<br>잇습니다.",
+      "about.note": "주식회사맑은에스티 · AI 엔지니어<br>대한민국",
+      "about.big": "AI 개발의 전 과정을 다룹니다. <em>데이터, 모델 연구, 평가, 최적화, 그리고 엣지 배포까지.</em>",
+      "about.d1": "지능형 CCTV를 위한 비디오 이해가 주 분야입니다. 폭력과 낙상을 인식하고, 화재와 연기를 감지하며, 경보가 관제 시스템에 전달되기 전에 비전-언어 모델로 다시 확인합니다. 인증받은 지능형 CCTV 시스템을 개발했고, 최적화한 파이프라인을 Jetson, DEEPX, Ambarella, Rockchip 플랫폼에 배포했습니다.",
+      "about.d2": "지금은 AI 연구소에서 비디오 이해, 효율적인 모델, 실용적인 멀티모달 AI 연구에 기여할 기회를 찾고 있습니다.",
+      "work.kicker": "02 — 주요 프로젝트", "work.title": "만들고, 검증하고,<br>배포했습니다.",
+      "work.note": "지능형 관제, 엣지 추론, 응용 컴퓨터 비전 분야의 주요 프로젝트입니다.",
+      "p1.name": "학교생활안전 · 폭력 행동 인식",
+      "p1.desc": "배회·침입·폭력을 감지하는 실시간 RTSP 시스템을 만들었습니다. 장면이 겹치지 않게 나눈 평가 영상 150개로 MViT-v2, 키포인트 TCN, 프레임 CNN을 비교했고, 사건 시점 주변만 학습한 모델이 정상 영상에서 경보를 내던 문제를 고쳤습니다. KISA 인증 평가에서 Combined F1 96.6을 기록했습니다.",
+      "p1.stat": "인증 복합 평가",
+      "p2.name": "화재·연기 감지",
+      "p2.desc": "D-FINE 감지기를 17,769장으로 학습해 COCO AP@.5:.95 0.7985를 달성했습니다. 노을과 조명 같은 까다로운 오탐은 정지 객체 억제, 시간 규칙, CLIP/VLM 검증으로 줄였습니다. 2026년 6월 KISA 인증을 통과했습니다.",
+      "p3.name": "낙상·폭력 경보의 VLM 검증",
+      "p3.desc": "Jetson Orin NX에 Qwen3-VL을 올려 TCN 경보마다 직전 6초 영상을 다시 보게 했습니다. 테스트 세트에서 오탐 32건 중 25건을 경보당 약 3초에 걸러냈습니다. 양자화 실험에서는 테스트 환경 기준으로 Q4_K_M이 Q8_0보다 폭력 인식이 좋았습니다.",
+      "p3.stat": "테스트에서 걸러낸 오탐",
+      "p4.name": "INT8 양자화와 엣지 NPU 배포",
+      "p4.desc": "Ambarella CV2S, DEEPX DX-M1, Jetson TensorRT에서 작업했습니다. INT8 출력이 상수로 고정되던 원인이 테스트 코드의 자료형 불일치(int16 자리에 float32 입력)임을 찾아 출력 상관계수를 0.9948로 회복했습니다. Pose QAT는 정확도를 유지해 PCK@0.05가 86.94에서 87.14로 올랐고, LSTM을 지원하지 않는 NPU에서는 LSTM을 기본 연산으로 다시 구현했습니다.",
+      "p4.stat": "INT8 / FP32 상관계수",
+      "p5.name": "다중 카메라 실시간 낙상 감지",
+      "p5.desc": "사람 감지, 포즈 추정, 83차원 움직임 특징, causal TCN을 잇는 파이프라인을 개발했습니다. 실제 카메라에서 어려운 오탐 사례를 모았고, 모델을 바꿀 때마다 특징값과 출력이 같은지 확인했습니다. 이전 LSTM 버전은 NTU RGB+D 120에서 97.5–99% 정확도를 기록했습니다.",
+      "p5.strong": "카메라 2대", "p5.stat": "현장 상시 운영",
+      "p6.name": "CCTV 기반 강우 강도 추정",
+      "p6.desc": "첫 모델이 빗줄기가 아니라 젖은 벽의 모습을 학습했다는 것을 발견하고 원인을 분석했습니다. 카메라별 AdaBN을 평가해 병원 카메라의 맑은 날 오탐 확률을 0.91에서 0.05로 낮췄습니다. 완주 카메라 결과는 계속 분석 중입니다.",
+      "p6.stat": "맑은 날 오탐 확률",
+      "p7.name": "데이터셋 구축과 누수 점검",
+      "p7.desc": "카메라 3대, 약 55시간 영상에서 가방·안경·모자 crop 82,426개를 모았습니다. 누운 사람 1,441프레임에는 자동 라벨링과 사람 검수 과정을 만들었습니다. 서로 다른 프로젝트에서 train/validation 누수 52%와 85%를 찾아 그룹 단위 분할로 고쳤습니다.",
+      "p7.stat": "수집한 객체 crop",
+      "p8.name": "엣지 AI 박스 펌웨어와 제품 파이프라인",
+      "p8.desc": "Yocto와 RAUC로 Jetson Orin NX AIBOX 펌웨어 v1.0.3–v1.1.0을 빌드하고 릴리스했습니다. ONVIF Profile M 게이트웨이에 VLM 검증을 넣었고, RK3588 + DEEPX의 추적·낙상·폭력 파이프라인을 C++ 데몬으로 포팅했습니다(4채널, 채널당 9–10 FPS). LAN mDNS 리더 선출과 채널별 RTSP 재연결도 구현했습니다.",
+      "p8.stat": "채널 × 채널당 FPS",
+      "num.kicker": "03 — 엔지니어링 성과", "num.title": "의미 있는<br>숫자들.",
+      "num.note": "모델 평가와 현장 중심 엔지니어링에서 측정한 결과입니다.",
+      "num.1": "Combined F1<br>학교생활안전 KISA 평가", "num.2": "상관계수<br>INT8 출력 대 FP32",
+      "num.3": "사람 recall<br>재학습과 DEEPX INT8 배포 후", "num.4": "걸러낸 오탐<br>Qwen3-VL 경보 검증 테스트",
+      "num.5": "PCK@0.05<br>Pose QAT 결과", "num.6": "맑은 날 오탐 확률<br>AdaBN 적용 후 병원 카메라",
+      "tl.kicker": "04 — 이력", "tl.title": "만들어 온<br>기록.", "tl.note": "주요 이정표 · 2024—2026",
+      "e1.h": "AIBOX 보안 감사와 펌웨어 v1.1.0", "e1.p": "펌웨어 보안과 안정성을 점검해 수정 패치를 준비하고 v1.1.0 업데이트를 릴리스했습니다.",
+      "e2.h": "Jetson Orin NX에서 VLM 경보 검증", "e2.p": "Qwen3-VL로 낙상·폭력 경보를 다시 확인하고 확인된 이벤트만 VMS로 보냈습니다.",
+      "e3.h": "RK3588 + DEEPX 파이프라인 C++ 포팅", "e3.p": "추적·낙상·폭력 파이프라인을 다채널 C++ 데몬으로 옮겼습니다.",
+      "e4.h": "화재·연기 시스템 KISA 인증 통과", "e4.p": "인증받은 화재·연기 감지 시스템을 개발했습니다.",
+      "e5.h": "주식회사맑은에스티 입사", "e5.p": "AI 연구팀에 AI/ML 연구원으로 합류해 지능형 CCTV와 엣지 AI 시스템을 개발하고 있습니다.",
+      "e6.h": "AI-Masters Bootcamp 수료", "e6.p": "딥러닝과 컴퓨터 비전 8개월 과정을 마쳤습니다.",
+      "e7.h": "가천대학교(글로벌) 졸업", "e7.p": "컴퓨터공학 학사.",
+      "cap.kicker": "05 — 역량", "cap.title": "픽셀에서<br>제품까지.",
+      "c1.i": "01 / 연구", "c1.h": "비디오 이해", "c1.p": "행동 인식, 폭력·낙상 감지, 시계열 모델링, 포즈 기반 특징, 평가 설계.",
+      "c2.i": "02 / 비전", "c2.h": "감지와 인식", "c2.p": "객체 감지, 화재·연기 감지, 데이터셋 구축, 어려운 오탐 수집, 오탐 분석.",
+      "c3.i": "03 / 멀티모달", "c3.h": "VLM 검증", "c3.p": "Qwen3-VL과 CLIP으로 경보를 다시 확인해 오경보를 줄이는 흐름.",
+      "c4.i": "04 / 최적화", "c4.h": "효율적인 추론", "c4.p": "ONNX, INT8, QAT, TensorRT, 양자화 디버깅, NPU용 연산 단위 변환.",
+      "c5.i": "05 / 엣지", "c5.h": "임베디드 배포", "c5.p": "Jetson Orin NX, DEEPX DX-M1, Ambarella CV2S, RK3588, 펌웨어, 제품 파이프라인.",
+      "c6.i": "06 / 시스템", "c6.h": "소프트웨어 엔지니어링", "c6.p": "C++, Python, RTSP, ONVIF, FastAPI, Yocto, RAUC, Linux, 다중 카메라 서비스.",
+      "ct.kicker": "06 — 연락처", "ct.title": "다음을 함께<br><span>만들어요.</span>",
+      "ct.note": "비디오 이해와 효율적인 엣지 AI 분야의 AI 연구 기회를 찾고 있습니다.", "ct.resume": "이력서 ↗",
+      "ft.role": "AI 엔지니어 / 컴퓨터 비전", "ft.top": "맨 위로 ↑"
+    },
+    uz: {
+      "meta.title": "Javokhir Tursunov — AI muhandis",
+      "meta.desc": "Javokhir Tursunov, real vaqtdagi video tushunish tizimlari va edge AI yaratadigan AI muhandis.",
+      "nav.about": "Men haqimda", "nav.work": "Loyihalar", "nav.timeline": "Tarix", "nav.contact": "Aloqa",
+      "nav.right": "Tadqiqot lavozimlariga ochiqman ↗",
+      "hero.eyebrow": "AI muhandis · Kompyuter ko‘rish",
+      "hero.intro": "Real vaqtda ishlaydigan video tushunish tizimlarini yarataman: ko‘rish modellarini o‘qitish va baholashdan tortib, ularni optimallashtirib edge AI qurilmalariga joylashgacha.",
+      "hero.button": "Loyihalarni ko‘rish <span>↘</span>", "hero.resume": "Rezyumeni ko‘rish ↗",
+      "hero.orb": "01 / VIDEO INTELLEKT — ZARRALAR MAYDONI",
+      "meta.1": "Combined F1 · KISA baholashi", "meta.2": "INT8 / FP32 korrelyatsiyasi", "meta.3": "Odamni topish (recall) o‘sishi",
+      "meta.4b": "4 kanal", "meta.4": "RK3588 + DEEPX’da joriy etish",
+      "about.kicker": "01 — Profil", "about.title": "Tadqiqot va real<br>tizimlar birlashganda.",
+      "about.note": "Malgeun ST Co., Ltd. · AI muhandis<br>Janubiy Koreya",
+      "about.big": "AI ishining butun siklida ishlayman: <em>ma’lumot, model tadqiqoti, baholash, optimallashtirish va qurilmaga joylash.</em>",
+      "about.d1": "Asosiy yo‘nalishim aqlli CCTV uchun video tushunish: zo‘ravonlik va yiqilishni aniqlash, yong‘in va tutunni topish, signal monitoring tizimiga yetib borishidan oldin uni vision-language model bilan tekshirish. Sertifikatlangan aqlli CCTV tizimlarini yaratganman va optimallashtirilgan pipeline’larni Jetson, DEEPX, Ambarella va Rockchip platformalariga joylaganman.",
+      "about.d2": "Hozir video tushunish, samarali modellar va amaliy multimodal AI yo‘nalishida AI tadqiqot institutida ishlash imkoniyatini qidiryapman.",
+      "work.kicker": "02 — Tanlangan ishlar", "work.title": "Yaratilgan, sinalgan,<br>joriy etilgan.",
+      "work.note": "Aqlli kuzatuv, edge inference va amaliy kompyuter ko‘rish bo‘yicha tanlangan loyihalar.",
+      "p1.name": "Maktab xavfsizligi va zo‘ravonlikni aniqlash",
+      "p1.desc": "Kezib yurish, ruxsatsiz kirish va zo‘ravonlikni aniqlaydigan real vaqtdagi RTSP tizimini qurdim. Sahnalari aralashmaydigan 150 ta videodan baholash to‘plami yaratib, MViT-v2, Keypoint TCN va Frame CNN’ni taqqosladim, hodisa vaqti atrofidagina o‘qitilgan model oddiy videolarda ham signal berishi muammosini tuzatdim. KISA sertifikatlash baholashida tizim Combined F1 96.6 natija ko‘rsatdi.",
+      "p1.stat": "Sertifikatlash umumiy baholashi",
+      "p2.name": "Yong‘in va tutunni aniqlash",
+      "p2.desc": "D-FINE detektorini 17 769 ta rasmda o‘qitib, COCO AP@.5:.95 = 0.7985 natijaga erishdim. Quyosh botishi va yoritish kabi qiyin xato signallarni harakatsiz obyektlarni bostirish, vaqt qoidalari va CLIP/VLM tekshiruvi bilan kamaytirdim. Tizim 2026-yil iyunda KISA sertifikatidan o‘tdi.",
+      "p3.name": "Yiqilish va zo‘ravonlik signallarini VLM bilan tekshirish",
+      "p3.desc": "Jetson Orin NX’ga Qwen3-VL’ni joylab, har bir TCN signalidan oldingi olti soniyani qayta ko‘rib chiqadigan qildim. Test to‘plamida 32 ta xato signaldan 25 tasini filtrladi, har bir signalga taxminan uch soniya ketdi. Kvantlash tajribalarida sinalgan sharoitda Q4_K_M zo‘ravonlikni aniqlashda Q8_0 dan yaxshiroq natija berdi.",
+      "p3.stat": "Testda filtrlangan xato signallar",
+      "p4.name": "INT8 kvantlash va edge NPU’ga joylash",
+      "p4.desc": "Ambarella CV2S, DEEPX DX-M1 va Jetson TensorRT bilan ishladim. INT8 chiqishi o‘zgarmas qiymatda qotib qolishi test kodidagi tur nomuvofiqligidan ekanini topdim (int16 o‘rniga float32 yozilgan), tuzatilgach chiqish korrelyatsiyasi 0.9948 ga qaytdi. Pose QAT aniqlikni saqladi: PCK@0.05 86.94 dan 87.14 ga ko‘tarildi. LSTM’ni qo‘llamaydigan NPU’lar uchun LSTM’ni oddiy amallar bilan qayta yozdim.",
+      "p4.stat": "INT8 / FP32 korrelyatsiyasi",
+      "p5.name": "Ko‘p kamerali real vaqtda yiqilishni aniqlash",
+      "p5.desc": "Odamni aniqlash, poza baholash, 83 o‘lchamli harakat belgilari va causal TCN’dan iborat pipeline ishlab chiqdim. Jonli kameralardan qiyin xato holatlarni yig‘dim va har safar model almashtirilganda belgilar hamda chiqishlar mosligini tekshirdim. Avvalgi LSTM versiyasi NTU RGB+D 120 da 97.5–99% aniqlikka erishgan.",
+      "p5.strong": "2 kamera", "p5.stat": "Joyida doimiy ishlaydi",
+      "p6.name": "CCTV orqali yomg‘ir intensivligini baholash",
+      "p6.desc": "Dastlabki model yomg‘ir chiziqlarini emas, ho‘l devor ko‘rinishini o‘rganganini aniqlab, sababini tahlil qildim. Har bir kamera uchun AdaBN’ni sinab, kasalxona kamerasida ochiq kundagi xato signal ehtimolini 0.91 dan 0.05 ga tushirdim. Vanju kamerasi natijalari hali o‘rganilmoqda.",
+      "p6.stat": "Ochiq kundagi xato signal ehtimoli",
+      "p7.name": "Dataset yaratish va sizib chiqishni tekshirish",
+      "p7.desc": "Uchta kameraning taxminan 55 soatlik videosidan sumka, ko‘zoynak va shlyapaning 82 426 ta kesimini yig‘dim. Yotgan odam tasvirlangan 1 441 kadr uchun avtomatik belgilash va inson tekshiruvi jarayonini qurdim. Turli loyihalarda train/validation o‘rtasida 52% va 85% sizib chiqishni topib, guruh bo‘yicha bo‘lish bilan tuzatdim.",
+      "p7.stat": "Yig‘ilgan obyekt kesimlari",
+      "p8.name": "Edge AI box firmware va mahsulot pipeline’i",
+      "p8.desc": "Yocto va RAUC yordamida Jetson Orin NX AIBOX firmware’ining v1.0.3–v1.1.0 versiyalarini yig‘ib chiqardim. ONVIF Profile M shlyuziga VLM tekshiruvini qo‘shdim, RK3588 + DEEPX kuzatish, yiqilish va zo‘ravonlik pipeline’larini C++ daemon’ga ko‘chirdim (4 kanal, har kanalda 9–10 FPS), LAN’da mDNS orqali yetakchini tanlash va har kanal uchun RTSP qayta ulanishni yozdim.",
+      "p8.stat": "Kanallar × har kanal FPS",
+      "num.kicker": "03 — Muhandislik natijalari", "num.title": "Muhim<br>raqamlar.",
+      "num.note": "Model baholash va amaliy muhandislik ishlarida o‘lchangan natijalar.",
+      "num.1": "Combined F1<br>Maktab xavfsizligi KISA baholashi", "num.2": "Korrelyatsiya koeffitsiyenti<br>INT8 chiqishi va FP32",
+      "num.3": "Odamni topish (recall)<br>Qayta o‘qitish va DEEPX INT8’dan keyin", "num.4": "Filtrlangan xato signallar<br>Qwen3-VL signal tekshiruvi testi",
+      "num.5": "PCK@0.05<br>Pose QAT natijasi", "num.6": "Ochiq kundagi xato signal ehtimoli<br>AdaBN’dan keyin kasalxona kamerasi",
+      "tl.kicker": "04 — Tarix", "tl.title": "Qurganlarim<br>tarixi.", "tl.note": "Asosiy bosqichlar · 2024—2026",
+      "e1.h": "AIBOX xavfsizlik auditi va firmware v1.1.0", "e1.p": "Firmware xavfsizligi va barqarorligini tekshirib, tuzatish patchini tayyorladim va v1.1.0 yangilanishini chiqardim.",
+      "e2.h": "Jetson Orin NX’da VLM bilan signal tekshiruvi", "e2.p": "Qwen3-VL yordamida yiqilish va zo‘ravonlik signallarini qayta tekshirib, tasdiqlanganlarini VMS’ga yubordim.",
+      "e3.h": "RK3588 + DEEPX pipeline’lari C++ ga ko‘chirildi", "e3.p": "Kuzatish, yiqilish va zo‘ravonlik pipeline’larini ko‘p kanalli C++ daemon’ga o‘tkazdim.",
+      "e4.h": "Yong‘in va tutun tizimi KISA sertifikatidan o‘tdi", "e4.p": "Sertifikatlangan yong‘in va tutunni aniqlash tizimini topshirdim.",
+      "e5.h": "Malgeun ST Co., Ltd. ga ishga kirdim", "e5.p": "AI tadqiqot jamoasiga AI/ML tadqiqotchi sifatida qo‘shilib, aqlli CCTV va edge AI tizimlarini ishlab chiqyapman.",
+      "e6.h": "AI-Masters Bootcamp’ni tamomladim", "e6.p": "Chuqur o‘rganish va kompyuter ko‘rish bo‘yicha sakkiz oylik dasturni tugatdim.",
+      "e7.h": "Gachon universitetini (Global) tamomladim", "e7.p": "Kompyuter injiniringi bo‘yicha bakalavr.",
+      "cap.kicker": "05 — Imkoniyatlar", "cap.title": "Pikseldan<br>mahsulotgacha.",
+      "c1.i": "01 / TADQIQOT", "c1.h": "Video tushunish", "c1.p": "Harakatni aniqlash, zo‘ravonlik va yiqilishni topish, vaqt bo‘yicha modellash, pozaga asoslangan belgilar va baholash dizayni.",
+      "c2.i": "02 / KO‘RISH", "c2.h": "Aniqlash va idrok", "c2.p": "Obyektlarni aniqlash, yong‘in va tutunni topish, dataset tayyorlash, qiyin manfiy misollarni yig‘ish va xato signallar tahlili.",
+      "c3.i": "03 / MULTIMODAL", "c3.h": "VLM tekshiruvi", "c3.p": "Signallarni qayta ko‘rib chiqish va yolg‘on signallarni kamaytirish uchun Qwen3-VL va CLIP asosidagi jarayonlar.",
+      "c4.i": "04 / OPTIMALLASHTIRISH", "c4.h": "Samarali inference", "c4.p": "ONNX, INT8, QAT, TensorRT, kvantlash xatolarini tuzatish va NPU uchun amallar darajasida moslashtirish.",
+      "c5.i": "05 / EDGE", "c5.h": "Qurilmaga joylash", "c5.p": "Jetson Orin NX, DEEPX DX-M1, Ambarella CV2S, RK3588, firmware va mahsulot pipeline’lari.",
+      "c6.i": "06 / TIZIMLAR", "c6.h": "Dasturiy muhandislik", "c6.p": "C++, Python, RTSP, ONVIF, FastAPI, Yocto, RAUC, Linux va ko‘p kamerali servislar.",
+      "ct.kicker": "06 — Aloqa", "ct.title": "Keyingisini<br><span>birga quraylik.</span>",
+      "ct.note": "Video tushunish va samarali edge AI bo‘yicha AI tadqiqot imkoniyatlariga ochiqman.", "ct.resume": "Rezyume ↗",
+      "ft.role": "AI MUHANDIS / KOMPYUTER KO‘RISH", "ft.top": "YUQORIGA ↑"
+    }
+  };
+  var els = document.querySelectorAll("[data-i18n]");
+  var EN = {};
+  els.forEach(function (el) { EN[el.getAttribute("data-i18n")] = el.innerHTML; });
+  var desc = document.querySelector('meta[name="description"]');
+  EN["meta.title"] = document.title;
+  EN["meta.desc"] = desc ? desc.getAttribute("content") : "";
+  var buttons = document.querySelectorAll(".lang button");
+
+  function setLang(lang) {
+    if (lang !== "ko" && lang !== "uz") lang = "en";
+    var d = T[lang] || {};
+    els.forEach(function (el) {
+      var k = el.getAttribute("data-i18n");
+      el.innerHTML = d[k] != null ? d[k] : EN[k];
     });
-    rows.forEach(function (r, i) {
-      var y = 30 + i * 34;
-      svg.appendChild(el("rect", { x: x0, y: y, width: sx(r.v) - x0, height: 18, "class": r.cls || cls }));
-      if (r.lo != null) {
-        svg.appendChild(el("line", { x1: sx(r.lo), y1: y + 9, x2: sx(r.hi), y2: y + 9, "class": "whisk" }));
-        svg.appendChild(el("line", { x1: sx(r.lo), y1: y + 4, x2: sx(r.lo), y2: y + 14, "class": "whisk" }));
-        svg.appendChild(el("line", { x1: sx(r.hi), y1: y + 4, x2: sx(r.hi), y2: y + 14, "class": "whisk" }));
-      }
-      svg.appendChild(el("text", { x: sx(r.hi != null ? r.hi : r.v) + 6, y: y + 13, "class": "t" }, r.label));
-    });
+    document.documentElement.lang = lang;
+    document.title = d["meta.title"] || EN["meta.title"];
+    if (desc) desc.setAttribute("content", d["meta.desc"] || EN["meta.desc"]);
+    buttons.forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-lang") === lang)); });
+    try { localStorage.setItem("jt-lang", lang); } catch (e) {}
   }
-  function names(svg, rows, x) {
-    rows.forEach(function (r, i) { svg.appendChild(el("text", { x: x, y: 43 + i * 34, "class": "t-ink" }, r)); });
+  buttons.forEach(function (b) { b.addEventListener("click", function () { setLang(b.getAttribute("data-lang")); }); });
+
+  var start = null;
+  try { start = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+  if (!start) { try { start = localStorage.getItem("jt-lang"); } catch (e) {} }
+  if (!start) {
+    var nav = (navigator.language || "en").toLowerCase();
+    start = nav.indexOf("ko") === 0 ? "ko" : nav.indexOf("uz") === 0 ? "uz" : "en";
   }
-
-  var vio = document.getElementById("vio");
-  names(vio, ["MViT-v2-S crop (배포)", "키포인트 TCN", "프레임 CNN + TCN"], 0);
-  panel(vio, 170, 230, 119, [0, 40, 80, 119], [
-    { v: 90, label: "≈90 / 119" }, { v: 77, label: "77 / 119" }, { v: 76, label: "76 / 119" }
-  ], "탐지 (폭력 영상 119개)", "bar-a");
-  panel(vio, 480, 150, 31, [0, 10, 20, 31], [
-    { v: 15, lo: 14, hi: 16, label: "14~16" }, { v: 5, label: "5" }, { v: 27.5, lo: 25, hi: 30, label: "25~30" }
-  ], "오경보 (정상 영상 31개)", "bar-b");
-
-  var vlm = document.getElementById("vlm");
-  names(vlm, ["Q8_0", "Q4_K_M (배포)"], 0);
-  panel(vlm, 170, 420, 19, [0, 5, 10, 15, 19], [
-    { v: 11, label: "11 / 19", cls: "bar-b" }, { v: 15, label: "15 / 19" }
-  ], "폭력 경보 확인 수", "bar-ok");
-
-  // Paired dots: before (muted) → after (ok) on one 0..1 scale.
-  var rain = document.getElementById("rain");
-  var rows = [["병원 카메라", .913, .046], ["주유소 카메라", .370, .038], ["완주 카메라", 1.0, .917]];
-  var x0 = 170, w = 380, sx = function (v) { return x0 + v * w; };
-  rain.appendChild(el("text", { x: x0, y: 14, "class": "t" }, "맑은 날 p(rain): AdaBN 전 ○ → 후 ●"));
-  [0, .25, .5, .75, 1].forEach(function (t) {
-    rain.appendChild(el("line", { x1: sx(t), y1: 24, x2: sx(t), y2: 126, "class": "grid" }));
-    rain.appendChild(el("text", { x: sx(t), y: 142, "text-anchor": "middle", "class": "t" }, t.toFixed(2)));
-  });
-  rows.forEach(function (r, i) {
-    var y = 39 + i * 34;
-    rain.appendChild(el("text", { x: 0, y: y + 4, "class": "t-ink" }, r[0]));
-    rain.appendChild(el("line", { x1: sx(r[2]), y1: y, x2: sx(r[1]), y2: y, "class": "ax", "stroke-width": 2 }));
-    rain.appendChild(el("circle", { cx: sx(r[1]), cy: y, r: 5.5, fill: "var(--surface)", stroke: "var(--muted)", "stroke-width": 2 }));
-    rain.appendChild(el("circle", { cx: sx(r[2]), cy: y, r: 5.5, "class": "bar-ok" }));
-    rain.appendChild(el("text", { x: 568, y: y + 4, "class": "t" }, r[1].toFixed(2) + " → " + r[2].toFixed(2)));
-  });
+  setLang(start);
 })();
 </script>
-
-</body>
-</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+<script>
+const canvas=document.querySelector('#orb');
+if (!window.THREE) { canvas.insertAdjacentHTML("afterend", "<p style='color:#777;text-align:center;font:10px monospace'>PARTICLE SPHERE · Enable internet to load 3D animation</p>"); } else {
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(38,1,.1,100);camera.position.z=5.6;
+const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+const group=new THREE.Group();scene.add(group);
+const count=10500, positions=new Float32Array(count*3), sizes=new Float32Array(count);
+const golden=Math.PI*(3-Math.sqrt(5));
+for(let i=0;i<count;i++){
+ const y=1-(i/(count-1))*2;const radius=Math.sqrt(1-y*y);const theta=golden*i;
+ const jitter=(Math.random()-.5)*.018;
+ positions[i*3]=Math.cos(theta)*radius*(1+jitter);positions[i*3+1]=y*(1+jitter);positions[i*3+2]=Math.sin(theta)*radius*(1+jitter);
+ sizes[i]=.25+Math.random()*.9;
+}
+const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));geometry.setAttribute('aSize',new THREE.BufferAttribute(sizes,1));
+const material=new THREE.ShaderMaterial({transparent:true,depthWrite:false,uniforms:{uTime:{value:0},uColor:{value:new THREE.Color('#f4f4f0')},uPixelRatio:{value:Math.min(devicePixelRatio,2)}},vertexShader:`attribute float aSize; uniform float uTime; uniform float uPixelRatio; varying float vAlpha; void main(){vec3 p=position; float wave=sin(atan(p.z,p.x)*5.0+uTime*0.45+p.y*8.0)*0.012; p*=1.0+wave; vec4 mv=modelViewMatrix*vec4(p,1.0); gl_Position=projectionMatrix*mv; gl_PointSize=(0.85+aSize*0.85)*uPixelRatio; vAlpha=0.58+0.42*smoothstep(-1.0,0.65,-mv.z/5.6);}`,fragmentShader:`uniform vec3 uColor; varying float vAlpha; void main(){vec2 c=gl_PointCoord-0.5; float d=length(c); if(d>0.5) discard; float alpha=(1.0-smoothstep(0.28,0.5,d))*vAlpha; gl_FragColor=vec4(uColor,alpha);}`});
+const points=new THREE.Points(geometry,material);group.add(points);
+const haloGeo=new THREE.BufferGeometry();const haloCount=1400, hp=new Float32Array(haloCount*3);for(let i=0;i<haloCount;i++){const a=Math.random()*Math.PI*2,r=1.25+Math.random()*.65;hp[i*3]=Math.cos(a)*r;hp[i*3+1]=(Math.random()-.5)*1.6;hp[i*3+2]=Math.sin(a)*r;}haloGeo.setAttribute('position',new THREE.BufferAttribute(hp,3));const haloMat=new THREE.PointsMaterial({color:0x777777,size:.006,transparent:true,opacity:.22,depthWrite:false});const halo=new THREE.Points(haloGeo,haloMat);group.add(halo);
+let pointerX=0,pointerY=0,targetX=0,targetY=0,isDown=false,lastX=0,lastY=0,dragX=0,dragY=0;
+canvas.addEventListener('pointerdown',e=>{isDown=true;lastX=e.clientX;lastY=e.clientY;canvas.setPointerCapture(e.pointerId);canvas.style.cursor='grabbing'});
+canvas.addEventListener('pointermove',e=>{if(isDown){dragY+=(e.clientX-lastX)*.006;dragX+=(e.clientY-lastY)*.006;lastX=e.clientX;lastY=e.clientY}else{const r=canvas.getBoundingClientRect();pointerX=((e.clientX-r.left)/r.width-.5)*2;pointerY=((e.clientY-r.top)/r.height-.5)*2;targetY=pointerX*.22;targetX=pointerY*.14}});
+canvas.addEventListener('pointerup',()=>{isDown=false;canvas.style.cursor='grab'});canvas.addEventListener('pointercancel',()=>{isDown=false;canvas.style.cursor='grab'});
+const resize=()=>{const r=canvas.getBoundingClientRect();renderer.setSize(r.width,r.height,false);camera.aspect=r.width/r.height;camera.updateProjectionMatrix()};new ResizeObserver(resize).observe(canvas);resize();
+const clock=new THREE.Clock();function animate(){requestAnimationFrame(animate);const t=clock.getElapsedTime();material.uniforms.uTime.value=t;group.rotation.y+=(targetY+dragY+ t*.075-group.rotation.y)*.025;group.rotation.x+=(targetX+dragX+Math.sin(t*.22)*.045-group.rotation.x)*.025;halo.rotation.y=-t*.035;points.rotation.z=Math.sin(t*.18)*.035;renderer.render(scene,camera)}animate();
+}
+</script>
+</body></html>
